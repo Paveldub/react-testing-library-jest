@@ -1,8 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('inputs should be initially empty', () => {
+test('inputs should initially empty', () => {
   render(<App />)
-  const emailInputElement = screen.getByRole('textbox');
-  expect(emailInputElement.value).toBe('')
+  const inputEmailElement = screen.getByRole('textbox');
+  const inputPasswordElement = screen.getByLabelText("Password");
+  const confirmInputPasswordElement = screen.getByLabelText(/confirm password/i);
+
+  expect(inputEmailElement.value).toBe('');
+  expect(inputPasswordElement.value).toBe('');
+  expect(confirmInputPasswordElement.value).toBe('');
 })
