@@ -42,3 +42,24 @@ test('should be able to type a confirm password', () => {
   userEvent.type(confirmInputPasswordElement, 'password!')
   expect(confirmInputPasswordElement.value).toBe('password!')
 })
+
+test('shod show email error message or invalid email', () => {
+  render(<App />)
+
+  const emailErrorElemet = screen.queryByText(/the email you input is invalid/i)
+  const inputEmailElement = screen.getByRole('textbox', {
+    name: /email/i
+  });
+  const submitButtonElement = screen.getByRole('button', {
+    name: /submit/i
+  })
+
+  expect(emailErrorElemet).not.toBeInTheDocument();
+
+  userEvent.type(inputEmailElement, 'dubstr1gmail.com') // without @
+  userEvent.click(submitButtonElement)
+
+  const emailErrorElemetAgain = screen.queryByText(/the email you input is invalid/i)
+
+  expect(emailErrorElemetAgain).toBeInTheDocument()
+})
