@@ -25,3 +25,20 @@ test('should be able to type an email', () => {
   userEvent.type(inputEmailElement, 'dubstr1@gmail.com')
   expect(inputEmailElement.value).toBe('dubstr1@gmail.com')
 })
+
+test('should be able to type a password', () => {
+  render(<App />)
+
+  const inputPasswordElement = screen.getByLabelText('Password')
+
+  userEvent.type(inputPasswordElement, 'password!')
+  expect(inputPasswordElement.value).toBe('password!')
+})
+
+test('should be able to type a confirm password', () => {
+  render(<App />)
+
+  const confirmInputPasswordElement = screen.getByLabelText(/confirm password/i);
+  userEvent.type(confirmInputPasswordElement, 'password!')
+  expect(confirmInputPasswordElement.value).toBe('password!')
+})
