@@ -1,6 +1,7 @@
 import './App.css';
 
 function App() {
+  
   return (
     <div className="container">
       <form>
@@ -18,6 +19,8 @@ function App() {
           <label htmlFor="confirm-password" className='form-label'>Confirm Password</label>
           <input type="password" className='form-control' id="confirm-password" name="confirm-password" />
         </div>
+
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
